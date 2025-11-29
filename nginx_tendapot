@@ -1,0 +1,14 @@
+path/to/local_folder/where/tendapot/nginx_logs/are_located/*.log{
+  daily
+  missingok
+  rotate 31
+  dateext
+  compress
+  delaycompress
+  notifempty
+  create 640 nginx nginx
+  sharedscripts
+  postrotate
+    cd /path/Tendapot-Main && /usr/bin/docker exec IMAGE_ID kill -s USR1 1
+  endscript
+}
